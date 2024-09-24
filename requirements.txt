@@ -1,0 +1,10 @@
+numpy
+pandas
+openpyxl
+itertools
+scikit-learn
+gradpyent
+plotly
+matplotlib
+ipywidgets
+IPython
