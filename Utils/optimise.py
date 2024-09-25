@@ -1,5 +1,76 @@
 import numpy as np
 
+def skills(skill_df):
+    """
+    :param skill_df: df of marks with skills used and thresholds
+    :return: list of skills and a nested dictionary where each mark has a dictionary of skills and their thresholds
+    """
+    skill_dict = {} #The skills used by each mark and their thresholds
+    all_skills = set() #Set of all skills used
+    for m in list(dict.fromkeys(skill_df['Mark'].tolist())):
+        skill_dict[m] = {}
+        for ele in skill_df.loc[skill_df['Mark'] == m]['Skills'].values[0].split(','):
+            print(ele)
+        skills = [int(ele) for ele in skill_df.loc[skill_df['Mark'] == m]['Skills'].values[0].split(',')]
+        for index, s in enumerate(skills):
+            skill_dict[m][s] = float(skill_df.loc[skill_df['Mark'] == m]['T' + str(index+1)].values[0])
+            all_skills.add(s)
+    all_skills = sorted(list(all_skills))
+    return all_skills, skill_dict
+
+def student_scores(score_df, student):
+    """
+    :param score_df: df containing the scores for each mark for each student
+    :param student: student identifier
+    :return: array (binary) of student scores
+    """
+    s_scores = score_df[str(student)].to_numpy(dtype=int) #array of scores for marks
+    return s_scores
+
+def student_sigs(score_df, mark_dict, student):
+    """
+    :param score_df: df containing the scores for each mark for each student
+    :param mark_dict: dictionary where keys are the questions and values are lists containing the marks belonging to that question
+    :param student: student identifier
+    :return: array (binary) of signals to use for the student
+    """
+    s_scores = student_scores(score_df, student) #array of scores for marks
+    s_signals = np.zeros(len(s_scores), dtype=int) #array of signals for marks
+    for q in mark_dict.keys():
+        for index, mark in enumerate(mark_dict[q]):
+            if index == 0:
+                s_signals[mark-1] = 1
+            else:
+                if s_scores[mark - 2] == 1:
+                    s_signals[mark-1] = 1
+    return s_signals
+
+def thresharray(dict, all_skills):
+    """
+    :param dict: skilldict containing skills and accompanying thresholds for each j
+    :param all_skills: all skills used
+    :return: N_skills * N_j array of skill thresholds for each j
+    """
+    thresharray = []
+    for j, ts in dict.items():
+        tj = [0 for s in all_skills]
+        for skill, t in ts.items():
+            tj[all_skills.index(skill)] = t
+        thresharray.append(tj)
+    return np.array(thresharray)
+
+def Combs(tarray, all_skills):
+    """
+    :param tarray: an N_skills*N_j array of thresholds (0 if skills is not used)
+    :param all_skills: all skills used
+    :return: Transform thresholds into a list of combinations of skill levels (bins) which will be the same across all i.
+    """
+    lists = []
+    for index, s in enumerate(all_skills):
+        lists.append(sorted(list(set(tarray[:, index].tolist()))))  # remove duplicates and sort thresholds by size
+    combs = list(itertools.product(*lists))
+    return np.array(combs)
+
 def Cond_PScore_setup(combs, thresharray, theta, all_skills):
     """
     :param combs: array of all possible skill combinations
