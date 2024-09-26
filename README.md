@@ -19,7 +19,7 @@
   <h5><ins>Student Feedback</ins></h5>
   <img src="https://github.com/user-attachments/assets/f4497908-f967-441e-be32-69f22e62a6b8" alt="StudentRecording" width="400">
   <h5><ins>Teacher Feedback</ins></h5>
-  <img src="https://github.com/user-attachments/assets/d1e29be7-6d8b-4073-9a3b-330e8ca77a73" alt="TeacherRecording" width="700">
+  <img src="https://github.com/user-attachments/assets/c32db1a4-a344-490c-a539-38047a19b60d" alt="TeacherRecording" width="700">
 </div>
 
 ## Getting Started
@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-See Kaggle for an in-depth walkthrough for using this tool.
+See  <a href="https://www.kaggle.com/code/zakariyankhan/ragnar-precision-feedback-using-an-em-algorithm/">Kaggle</a> for an in-depth walkthrough for using this tool.
 
 ## License
 
