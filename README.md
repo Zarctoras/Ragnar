@@ -1,10 +1,10 @@
 <div align="center">
-  <h1>Ragnar</h1>
-  <h3>Understanding your Class's Skills in Mathematics.</h3>
+  <h1 style="margin-bottom: 0;">Ragnar</h1>
+  <h3 style="margin-top: 0;">Understanding your Class's Skills in Mathematics.</h3>
   <h5>Get a full walkthrough on <a href="https://www.kaggle.com/code/zakariyankhan/ragnar-precision-feedback-using-an-em-algorithm/">Kaggle</a></h5>
 </div>
 
-<p>Ragnar is a tool designed to help identify the gaps in student mathematics skills and provide targeted feedback. By leveraging student test score data, it makes a 'best guess' at the skill levels for each student and then provides feedback to a student or a teacher to aid improvement.</p>
+<p>Ragnar is a precision education tool that identifies student knowledge gaps in mathematics whilst integrating seamlessly into the teacher's toolkit. It aims to streamline skill assessment in education, providing teachers with clear, data-backed insights into student performance and offering students personalised feedback for improvement.</p>
 
  <p><strong>Features:</strong></p>
     <ul>
@@ -13,6 +13,9 @@
         <li><strong>User-friendly Feedback</strong>: Delivers feedback to teachers and students using the RAG (Red/Amber/Green) system.</li>
         <li><strong>Interactivity</strong>: Allows users to change the feedback method, harshness, and choose whether to cluster students into skills-based groups. </li>
     </ul>
+
+<p><strong>Why Ragnar?</strong></p>
+<p>Skills can be viewed as the building blocks of mathematics ability. A single weak skill can prevent a student from answering a question correctly or mastering a new concept. Working as an interventionist in secondary education, I witnessed how much effort goes into filling these knowledge gaps. Ragnar streamlines this process by shining a light on these gaps. By using Ragnar, educators can focus on targeted interventions and deliver personalised feedback to their students.</p>
 
 ## Feedback Demonstrations
 <div align="center">
